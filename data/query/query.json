@@ -1,5 +1,5 @@
 {
     "intent": "Volume Operations",
-    "summary": "The user wants to create a volume.",
-    "query": "i want to create volumei want to create volume"
+    "summary": "The user wants to create a volume of size 100 GB.",
+    "query": "i want to creata disk of size 100 gbi want to creata disk of size 100 gb"
 }

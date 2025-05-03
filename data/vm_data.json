@@ -21,10 +21,10 @@
         "volume_id": "041318f9-bfe4-4164-81ef-52608319ce7c"
     },
     {
-        "vm_id": "4f8acc16-fdfe-4c58-93fb-c63b03a54487",
+        "vm_id": "227619a7-2cd2-4d43-bdc6-471066ef9d0f",
         "flavor_id": "690694f9-78c9-4fd1-941c-34fc88ae401a",
         "image_id": "87d9dbd5-5d68-47dd-aed1-a8a2e6592fad",
         "network_id": "c92f8cb2-cf4d-4614-be27-e9ad192fc3e8",
-        "volume_id": "e041a66a-02e9-4827-b29c-7f37bf1b8744"
+        "volume_id": "590f2298-45e2-4dc1-ac51-4cfb59d1c87c"
     }
 ]

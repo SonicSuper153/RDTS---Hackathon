@@ -8,5 +8,10 @@
         "volume_name": "data_disk",
         "volume_id": "2c52fbf1-2051-453f-ad1e-e000437f811d",
         "size": 20
+    },
+    {
+        "volume_name": "data_disk",
+        "volume_id": "1cf36660-6959-4665-946f-dc5ece4b9da8",
+        "size": 100
     }
 ]
