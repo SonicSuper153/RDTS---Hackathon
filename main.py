@@ -1,39 +1,66 @@
+import json
+from utils.file import FileHandler
 from services.query_breakdown import QueryProcessor
 from services.vm_creation import VMCreator
+from services.vm_deletion import DeleteVM
+from services.network_creation import NetworkCreator
+from services.volume_operation import VolumeCreator
+from services.vm_resizing import VMResizer
+from services.volume_operation import VolumeDeleter
 
-#query = input("Please enter your query: ")
-#
-#sage = QueryProcessor(query)
-#sage.break_query()
-#intent = sage.verify_intent()
-#
-#if intent == "VM Proviisioning":
-#    print("Intent classified successfully!")
-#
-#elif intent == "VM Deletion":
-#    print("Intent classified successfully!")
-#
-#elif intent == "VVM Resizing":
-#    print("Intent classified successfully!")
-#
-#elif intent == "Network Creation":
-#    print("Intent classified successfully!")
-#
-#elif intent == "Volume Operations":
-#    print("Intent classified successfully!")
-#
-#elif intent == "Vsage Query":
-#    print("Intent classified successfully!")
-#
-#else:
-#    print("Invalid intent. Please try again.")
+file_handler = FileHandler()
 
-crate = VMCreator("gAAAAABoFfsrDLcHbuHU32hwJAnfLKM1eWrF2Xg-dE4MyNxnJeRXGic4CAGq63_-pYtVDuOhFC5cBNZUBQ0hJQr7BaGSP53HeZELfG5tZP_NNJg-IiHhhat7pdnSP0DnOKyK4Ah2aw0h9l9ZHDIICcfee5vjzLbtEd3pw57WhMaS843gejkTXDI", "0a02b14bcfca64e44bd68f2d00d8555b5")
-crate.get_flavors()
-crate.get_images()
-crate.get_networks()
-crate.get_keypairs()
-crate.create_disk()
-#crate.wait_for_volume_available()
-crate.create_vm()
+while True:
+    query = input("Please enter your query (or type 'exit' to quit): ")
+
+    if query.lower() == "exit":
+        print("Exiting the system.")
+        break
+
+    sage = QueryProcessor(query)
+    sage.break_query()
+    intent = sage.verify_intent()
+
+    if intent == "VM Provisioning":
+        crate = VMCreator(
+            "gAAAAABoFhtvDDi_p7bmiHhMIvSYxb6bnR2YN7o7HyWGqbltbOwSpqjvS_4mIA_aOI7ulwPPa5bJmuekTexSjS2xQB4vWyIz53Jd_s0nN4iBGIiiqDy9GNYiQmULPCBJuyMx48IEa1OkCiLFLD0SjIoMmBc8iwQtC9r7H4JVkTvrovMkoHzjecw",
+            "0a02b14bcfca64e44bd68f2d00d8555b5"
+        )
+        crate.get_flavors()
+        crate.get_images()
+        crate.get_networks()
+        crate.get_keypairs()
+        crate.create_disk()
+        crate.create_vm()
+
+    elif intent == "VM Deletion":
+        deleter = DeleteVM(
+            "gAAAAABoFhtvDDi_p7bmiHhMIvSYxb6bnR2YN7o7HyWGqbltbOwSpqjvS_4mIA_aOI7ulwPPa5bJmuekTexSjS2xQB4vWyIz53Jd_s0nN4iBGIiiqDy9GNYiQmULPCBJuyMx48IEa1OkCiLFLD0SjIoMmBc8iwQtC9r7H4JVkTvrovMkoHzjecw",
+            "0a02b14bcfca64e44bd68f2d00d8555b5"
+        )
+        with open("data/vm_data.json", 'r') as file:
+            data = json.load(file)
+            if isinstance(data, list) and not data:
+                print("The file contains an empty JSON array.")
+            else:
+                print("The file does not contain an empty JSON array.")
+                deleter.delete()
+
+    elif intent == "Network Creation":
+        net_creator = NetworkCreator(
+            "gAAAAABoFhtvDDi_p7bmiHhMIvSYxb6bnR2YN7o7HyWGqbltbOwSpqjvS_4mIA_aOI7ulwPPa5bJmuekTexSjS2xQB4vWyIz53Jd_s0nN4iBGIiiqDy9GNYiQmULPCBJuyMx48IEa1OkCiLFLD0SjIoMmBc8iwQtC9r7H4JVkTvrovMkoHzjecw"
+        )
+        net_creator.create_network()
+
+    elif intent == "Volume Operations":
+        size = int(input("Please enter size of volume: "))
+        vol_create = VolumeCreator(
+            "gAAAAABoFhtvDDi_p7bmiHhMIvSYxb6bnR2YN7o7HyWGqbltbOwSpqjvS_4mIA_aOI7ulwPPa5bJmuekTexSjS2xQB4vWyIz53Jd_s0nN4iBGIiiqDy9GNYiQmULPCBJuyMx48IEa1OkCiLFLD0SjIoMmBc8iwQtC9r7H4JVkTvrovMkoHzjecw",
+            size,
+            "0a02b14bcfca64e44bd68f2d00d8555b5"
+        )
+        vol_create.create_volume()
+
+    else:
+        print("Invalid intent. Please try again.")
 

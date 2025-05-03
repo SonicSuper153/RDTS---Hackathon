@@ -1,5 +1,5 @@
 {
-    "intent": "VM Provisioning",
-    "summary": "The user wants to create a VM.",
-    "query": "need to creATE A VMneed to creATE A VM"
+    "intent": "Volume Operations",
+    "summary": "The user wants to create a volume.",
+    "query": "i want to create volumei want to create volume"
 }

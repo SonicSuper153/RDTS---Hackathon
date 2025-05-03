@@ -1,0 +1,12 @@
+[
+    {
+        "volume_name": "data_disk",
+        "volume_id": "f95155d6-7624-44e6-a01d-68be9eda1ee9",
+        "size": 10
+    },
+    {
+        "volume_name": "data_disk",
+        "volume_id": "2c52fbf1-2051-453f-ad1e-e000437f811d",
+        "size": 20
+    }
+]

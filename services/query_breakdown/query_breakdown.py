@@ -43,10 +43,9 @@ class QueryProcessor:
         user_input = input(f"Is this the correct intent?: {self.intent} \nPress Y for yes or N for no: ")
         if user_input.lower() == "y":
             print("Intent classified successfully!")
+            return self.intent
         elif user_input.lower() == "n":
             print("🧠 Deeply analyzing your query")
             self.query = f"{self.query} The intent cannot be {self.intent}"
-        else:
-            print("Invalid input. Please enter Y or N.")
 
         return self.intent
